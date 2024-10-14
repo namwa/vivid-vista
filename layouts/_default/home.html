@@ -1,6 +1,9 @@
 {{ define "main" }}
   {{ .Content }}
-   HOme.html
+  <p class="font-display text-red-500">Display</p>
+  <p class="font-body text-green-500">body</p>
+
+
   {{ range site.RegularPages }}
     <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
     {{ .Summary }}
