@@ -6,8 +6,13 @@
   <div class="container mx-auto px-4 sm:px-6 py-4 lg:px-8">
     <div class="relative flex items-center justify-between h-16">
       <div class="flex items-center">
-        <a href="/" class="flex-shrink-0 font-accent font-semibold text-2xl">
+        <a href="/" class="flex-shrink-0 flex flex-col items-center group font-accent font-semibold text-2xl">
           {{ site.Title }}
+          <!-- Hand-drawn underline SVG -->
+          <div class="w-16 h-0 text-blue-500 opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100">
+            {{ $curvy := readFile "static/icons/curvy_line.svg" }}
+            {{ $curvy | safeHTML }}
+          </div>
         </a>
       </div>
       <div class="hidden md:block">
@@ -69,19 +74,20 @@
         {{- $name = . }}
       {{- end }}
     {{- end }}
-    <li class="flex items-center relative md:pl-0  group space-x-4 font-display font-bold text-3xl">
+    <li class="flex items-center relative md:pl-0 group space-x-4 font-display font-bold text-3xl">
       <span class="h-7 w-7 md:w-5 md:h-5 text-icterine">
         {{ $svg := readFile "static/icons/star.svg" }}
         {{ $svg | safeHTML }}
       </span>
-      <a class="flex flex-col items-center"
+      <a class="flex flex-col items-center {{ if $page.IsMenuCurrent .Menu . }}active{{ end }}"
         {{- range $k, $v := $attrs }}
           {{- with $v }}
             {{- printf " %s=%q" $k $v | safeHTMLAttr }}
           {{- end }}
         {{- end -}}
-      >{{ $name }}
-        <!-- Hand-drawn Circle SVG -->
+      >
+        {{ $name }}
+        <!-- Hand-drawn underline SVG -->
         <div class="w-16 h-0 text-blue-500 opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100">
           {{ $curvy := readFile "static/icons/curvy_line.svg" }}
           {{ $curvy | safeHTML }}

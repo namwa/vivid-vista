@@ -7,12 +7,15 @@ menus:
     - name: Home
       pageRef: /
       weight: 10
-    - name: Posts
-      pageRef: /posts
+    - name: Projects
+      pageRef: /projects
       weight: 20
-    - name: Tags
-      pageRef: /tags
+    - name: Blog
+      pageRef: /blog
       weight: 30
+    - name: About
+      pageRef: /about
+      weight: 40
 module:
   hugoVersion:
     extended: false
