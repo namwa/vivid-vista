@@ -4,7 +4,7 @@
     <h1 class="font-display font-semibold text-4xl md:text-7xl text-risd-blue">
       {{ .Site.Params.Slogan }}
     </h1>
-    <!-- {{ .Content }} -->
+    {{/* {{ .Content }} */}}
   </div>
 </div>
 
@@ -20,7 +20,6 @@
           <div class="bg-white p-4 -rotate-6 border-2 border-black">
             <img src="{{ .RelPermalink }}" alt="Profile Picture" class="block w-full">
           </div>
-
           {{- end }}
         {{- end }}
       </div>
@@ -35,24 +34,29 @@
 
 {{/* Projects section */}}
 
-{{/* Blog section */}}
+{{/* Features section */}}
 <div class="bg-white container md:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
   <div class=" border-x border-black">
     <div class="py-20 md:py-36">
-      <h2 class="font-display text-center text-4xl mb-10">Blog</h2>
+      <h2 class="font-display text-center text-4xl mb-10">Why static?</h2>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 px-4">
-      {{ $colors := slice "bg-tomato" "bg-cherry-pink" "bg-icterine" }}
-        {{/* card */}}
-        {{ range $index, $page := site.RegularPages }}
-        <div class="{{ index $colors (mod $index (len $colors)) }} border border-black">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        {{ $bgColors := slice "bg-tomato" "bg-cherry-pink" "bg-icterine" "bg-risd-blue" "bg-white" }}
+        {{ $textColors := slice "text-black" "text-black" "text-gray-800" "text-white" "text-gray-800" }}
+
+        {{ range $index, $feature := .Params.features}}
+        <div class="{{ index $bgColors (mod $index (len $bgColors)) }} border border-black h-52 p-8 flex flex-col items-center justify-center space-y-4">
+          <h3 class="{{ index $textColors (mod $index (len $textColors)) }} text-2xl font-display font-semibold">
+            {{ $feature.title}}
+          </h3>
           <img
-            src="{{ $page.Params.image | relURL }}"
-            alt="Image for {{ $page.LinkTitle }}"
-            class="w-full"
+            src="{{ $feature.icon | relURL }}"
+            alt="Icon {{ $feature.title }}"
+            class="h-8 w-8"
           >
-          <h3><a href="{{ $page.RelPermalink }}">{{ $page.LinkTitle }}</a></h3>
-          {{ $page.Summary | truncate 150 }}
+          <p class="{{ index $textColors (mod $index (len $textColors)) }} mt-4 font-body text-xl">
+            {{ $feature.description }}
+          </p>
         </div>
         {{ end }}
       </div>
