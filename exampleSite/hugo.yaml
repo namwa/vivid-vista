@@ -1,0 +1,18 @@
+baseURL: 'https://example.org/'
+languageCode: 'en-us'
+title: 'Namwa'
+theme: 'vivid-vista'
+params:
+  slogan: >
+    Building beautiful,
+    blazing-fast static websites
+
+  # Home page, about section
+  about:
+    enable: true
+    title: Hi this is Namwa.
+    body: Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuer
+      cubilia curae; Fusce diam justo, dictum ut leo sit amet, hendrerit varius neque. Maecenas non
+      ortor mauris. Aliquam aliquam tempus mauris nec venenatis. In in massa vitae leo malesuada
+      laoreet eget eu mi.
+    image: 'images/profile_pic.jpg'

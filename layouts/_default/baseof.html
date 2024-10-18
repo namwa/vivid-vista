@@ -3,11 +3,11 @@
 <head>
   {{ partial "head.html" . }}
 </head>
-<body>
+<body class="h-screen flex flex-col">
   <header>
     {{ partial "header.html" . }}
   </header>
-  <main>
+  <main class="mb-auto">
     {{ block "main" . }}{{ end }}
   </main>
   <footer>

@@ -1,11 +1,46 @@
 {{ define "main" }}
-  {{ .Content }}
-  <p class="font-display text-red-500">Display</p>
-  <p class="font-body text-green-500">body</p>
+<div class="bg-cherry-pink border-b border-gray-900">
+  <div class="container md:max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-36">
+    <h1 class="font-display font-semibold text-4xl md:text-7xl text-risd-blue">
+      {{ .Site.Params.Slogan }}
+    </h1>
+    <!-- {{ .Content }} -->
+  </div>
+</div>
 
+{{/* About section */}}
+{{- if .Site.Params.about.enable | default true }}
+<div class="bg-icterine py-20 md:py-32">
+  <div class="container md:max-w-7xl mx-auto px-4 sm:px-6 py-4 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-14 w-full">
+      <div class="order-2 md:order-1 bg-cherry-pink border-2 border-black w-full p-2">
+        {{ with .Site.Params.about.image }}
+          {{ $image := resources.Get .}}
+          {{ with $image }}
+          <div class="bg-white p-4 -rotate-6 border-2 border-black">
+            <img src="{{ .RelPermalink }}" alt="Profile Picture" class="block w-full">
+          </div>
 
-  {{ range site.RegularPages }}
-    <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
-    {{ .Summary }}
-  {{ end }}
+          {{- end }}
+        {{- end }}
+      </div>
+      <div class="order-1 md:order-2 space-y-10">
+        <p class="font-accent text-2xl">{{- .Site.Params.about.title }}<p>
+        <p class="font-body text-lg">{{- .Site.Params.about.body }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+{{- end }}
+
+{{/* Blog section */}}
+<div class="bg-white">
+  <div class="container mx-auto px-4 sm:px-6 py-4 lg:px-8"></div>
+    <h2 class="text-4xl">Blog</h2>
+    {{ range site.RegularPages }}
+      <h3><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h3>
+      {{ .Summary }}
+    {{ end }}
+  </div>
+</div>
 {{ end }}
