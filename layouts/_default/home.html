@@ -1,6 +1,6 @@
 {{ define "main" }}
-<div class="bg-cherry-pink border-b border-gray-900">
-  <div class="container md:max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-36">
+<div class="bg-cherry-pink border-b border-black">
+  <div class="container md:max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-36">
     <h1 class="font-display font-semibold text-4xl md:text-7xl text-risd-blue">
       {{ .Site.Params.Slogan }}
     </h1>
@@ -10,8 +10,8 @@
 
 {{/* About section */}}
 {{- if .Site.Params.about.enable | default true }}
-<div class="bg-icterine py-20 md:py-32">
-  <div class="container md:max-w-7xl mx-auto px-4 sm:px-6 py-4 lg:px-8">
+<div class="bg-icterine border-b border-black">
+  <div class="container md:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-36">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-14 w-full">
       <div class="order-2 md:order-1 bg-cherry-pink border-2 border-black w-full p-2">
         {{ with .Site.Params.about.image }}
@@ -33,14 +33,30 @@
 </div>
 {{- end }}
 
+{{/* Projects section */}}
+
 {{/* Blog section */}}
-<div class="bg-white">
-  <div class="container mx-auto px-4 sm:px-6 py-4 lg:px-8"></div>
-    <h2 class="text-4xl">Blog</h2>
-    {{ range site.RegularPages }}
-      <h3><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h3>
-      {{ .Summary }}
-    {{ end }}
+<div class="bg-white container md:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div class=" border-x border-black">
+    <div class="py-20 md:py-36">
+      <h2 class="font-display text-center text-4xl mb-10">Blog</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 px-4">
+      {{ $colors := slice "bg-tomato" "bg-cherry-pink" "bg-icterine" }}
+        {{/* card */}}
+        {{ range $index, $page := site.RegularPages }}
+        <div class="{{ index $colors (mod $index (len $colors)) }} border border-black">
+          <img
+            src="{{ $page.Params.image | relURL }}"
+            alt="Image for {{ $page.LinkTitle }}"
+            class="w-full"
+          >
+          <h3><a href="{{ $page.RelPermalink }}">{{ $page.LinkTitle }}</a></h3>
+          {{ $page.Summary | truncate 150 }}
+        </div>
+        {{ end }}
+      </div>
+    </div>
   </div>
 </div>
 {{ end }}
