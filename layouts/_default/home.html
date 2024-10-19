@@ -43,6 +43,7 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {{ $bgColors := slice "bg-tomato" "bg-cherry-pink" "bg-icterine" "bg-risd-blue" "bg-white" }}
         {{ $textColors := slice "text-black" "text-black" "text-gray-800" "text-white" "text-gray-800" }}
+        {{ $icons := slice "icons/rocket.svg" "icons/seo.svg" "icons/responsive-design.svg" "icons/lock.svg" "icons/repair.svg" "icons/speed.svg" }}
 
         {{ range $index, $feature := .Params.features}}
         <div class="{{ index $bgColors (mod $index (len $bgColors)) }} border border-black h-52 p-8 flex flex-col items-center justify-center space-y-4">
@@ -50,9 +51,9 @@
             {{ $feature.title}}
           </h3>
           <img
-            src="{{ $feature.icon | relURL }}"
+            src="{{ (index $icons (mod $index (len $icons))) | relURL }}"
             alt="Icon {{ $feature.title }}"
-            class="h-8 w-8"
+            class="h-10 w-10"
           >
           <p class="{{ index $textColors (mod $index (len $textColors)) }} mt-4 font-body text-xl">
             {{ $feature.description }}
