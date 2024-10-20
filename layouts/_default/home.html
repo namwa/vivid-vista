@@ -32,22 +32,20 @@
 </div>
 {{- end }}
 
-{{/* Projects section */}}
-
 {{/* Features section */}}
 <div class="bg-white container md:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
   <div class=" border-x border-black">
     <div class="py-20 md:py-36">
-      <h2 class="font-display text-center text-4xl mb-10">Why static?</h2>
+      <h2 class="font-display text-center text-5xl">Why static?</h2>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      <div class="mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {{ $bgColors := slice "bg-tomato" "bg-cherry-pink" "bg-icterine" "bg-risd-blue" "bg-white" }}
-        {{ $textColors := slice "text-black" "text-black" "text-gray-800" "text-white" "text-gray-800" }}
+        {{ $textColors := slice "text-gray-800" "text-gray-800" "text-gray-800" "text-white" "text-gray-800" }}
         {{ $icons := slice "icons/rocket.svg" "icons/seo.svg" "icons/responsive-design.svg" "icons/lock.svg" "icons/repair.svg" "icons/speed.svg" }}
 
         {{ range $index, $feature := .Params.features}}
         <div class="{{ index $bgColors (mod $index (len $bgColors)) }} border border-black h-52 p-8 flex flex-col items-center justify-center space-y-4">
-          <h3 class="{{ index $textColors (mod $index (len $textColors)) }} text-2xl font-display font-semibold">
+          <h3 class="{{ index $textColors (mod $index (len $textColors)) }} text-3xl font-display font-semibold">
             {{ $feature.title}}
           </h3>
           <img
@@ -61,6 +59,31 @@
         </div>
         {{ end }}
       </div>
+    </div>
+  </div>
+</div>
+
+{{/* Blog section */}}
+<div class="bg-cherry-pink border-black">
+  <div class="container md:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-36">
+    <h2 class="font-display text-center text-5xl">Blog</h2>
+
+    <div class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-6">
+      {{- range first 3 site.RegularPages }}
+      <div class="bg-white p-4 border border-black">
+        <a href="{{ .RelPermalink }}">
+          <img
+            src="{{ .Params.image | relURL }}"
+            alt="Image for {{ .LinkTitle }}"
+            class="w-full"
+          >
+          <h3 class="md:text-3xl my-4 font-display text-gray-900">{{ .LinkTitle }}</h3>
+          <p class="text-xl text-gray-800">
+            {{ .Summary | plainify | truncate 150 | safeHTML }}
+          </p>
+        </a>
+      </div>
+      {{ end }}
     </div>
   </div>
 </div>
