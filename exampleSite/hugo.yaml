@@ -7,7 +7,7 @@ params:
     Building beautiful,
     blazing-fast static websites
 
-  # Home page, about section
+  # Home page, About section
   about:
     enable: true
     title: Hi this is Namwa.
@@ -16,3 +16,10 @@ params:
       ortor mauris. Aliquam aliquam tempus mauris nec venenatis. In in massa vitae leo malesuada
       laoreet eget eu mi.
     image: 'images/profile_pic.jpg'
+
+  # Home page, Cta section
+  cta:
+    enable: true
+    body: >
+      Let's transform your ideas into
+      lightning-fast websites
