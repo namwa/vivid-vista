@@ -23,9 +23,9 @@
           {{- end }}
         {{- end }}
       </div>
-      <div class="order-1 md:order-2 space-y-10">
-        <p class="font-accent text-2xl">{{- .Site.Params.about.title }}<p>
-        <p class="font-body text-lg">{{- .Site.Params.about.body }}</p>
+      <div class="order-1 md:order-2 space-y-20">
+        <p class="font-accent text-3xl md:text-5xl">{{- .Site.Params.about.title }}<p>
+        <p class="font-body text-lg md:text-xl">{{- .Site.Params.about.body }}</p>
       </div>
     </div>
   </div>
@@ -36,7 +36,7 @@
 <div class="bg-white container md:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
   <div class=" border-x border-black">
     <div class="py-20 md:py-36">
-      <h2 class="font-display text-center text-5xl">Why static?</h2>
+      <h2 class="font-display text-center text-3xl md:text-5xl">Why static?</h2>
 
       <div class="mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {{ $bgColors := slice "bg-tomato" "bg-cherry-pink" "bg-icterine" "bg-risd-blue" "bg-white" }}
@@ -45,7 +45,7 @@
 
         {{ range $index, $feature := .Params.features}}
         <div class="{{ index $bgColors (mod $index (len $bgColors)) }} border border-black h-52 p-8 flex flex-col items-center justify-center space-y-4">
-          <h3 class="{{ index $textColors (mod $index (len $textColors)) }} text-3xl font-display font-semibold">
+          <h3 class="{{ index $textColors (mod $index (len $textColors)) }} text-2xl md:text-3xl font-display font-semibold">
             {{ $feature.title}}
           </h3>
           <img
@@ -53,7 +53,7 @@
             alt="Icon {{ $feature.title }}"
             class="h-10 w-10"
           >
-          <p class="{{ index $textColors (mod $index (len $textColors)) }} mt-4 font-body text-xl">
+          <p class="{{ index $textColors (mod $index (len $textColors)) }} mt-4 font-body text-lg md:text-xl">
             {{ $feature.description }}
           </p>
         </div>
@@ -66,7 +66,7 @@
 {{/* Blog section */}}
 <div class="bg-cherry-pink border-black">
   <div class="container md:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-36">
-    <h2 class="font-display text-center text-5xl">Blog</h2>
+    <h2 class="font-display text-center text-3xl md:text-5xl">Blog</h2>
 
     <div class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-6">
       {{- range first 3 site.RegularPages }}
@@ -75,10 +75,10 @@
           <img
             src="{{ .Params.image | relURL }}"
             alt="Image for {{ .LinkTitle }}"
-            class="w-full"
+            class="w-full object-cover"
           >
-          <h3 class="md:text-3xl my-4 font-display text-gray-900">{{ .LinkTitle }}</h3>
-          <p class="text-xl text-gray-800">
+          <h3 class="text-2xl md:text-3xl my-4 font-display text-gray-900">{{ .LinkTitle }}</h3>
+          <p class="text-lg md:text-xl text-gray-800">
             {{ .Summary | plainify | truncate 150 | safeHTML }}
           </p>
         </a>
