@@ -21,5 +21,13 @@ params:
   cta:
     enable: true
     body: >
-      Let's transform your ideas into
-      lightning-fast websites
+      Ready to transform<br>
+      your ideas into<br>
+      lightning-fast websites?
+
+  # Social icons on footer
+  github: https://github.com/namwa
+
+  # Footer
+  footer:
+    author: By Namwa
