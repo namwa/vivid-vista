@@ -70,14 +70,16 @@
 
     <div class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-6">
       {{- range first 3 site.RegularPages }}
-      <div class="bg-white p-4 border border-black">
+      <div class="group bg-white p-4 border-2 border-black transition-all duration-300
+        hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+      >
         <a href="{{ .RelPermalink }}">
           <img
             src="{{ .Params.image | relURL }}"
             alt="Image for {{ .LinkTitle }}"
-            class="w-full object-cover"
+            class="w-full object-cover border border-black"
           >
-          <h3 class="text-2xl md:text-3xl my-4 font-display text-gray-900">{{ .LinkTitle }}</h3>
+          <h3 class="text-2xl md:text-3xl my-4 font-display text-gray-900 group-hover:underline decoration-2">{{ .LinkTitle }}</h3>
           <p class="text-lg md:text-xl text-gray-800">
             {{ .Summary | plainify | truncate 150 | safeHTML }}
           </p>
@@ -97,34 +99,34 @@
       {{ $svg | safeHTML }}
     </span>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:gap-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       <p class="font-display text-4xl md:text-6xl text-white">
         {{- .Site.Params.cta.body | safeHTML }}
       </p>
-
       <form class="font-body">
         <label for="name" class="sr-only">Name</label>
         <input id="name" name="name" type="text"
           class="block w-full border-2 border-black py-3 text-gray-900  placeholder:text-gray-700
-          focus:ring-2 focus:ring-inset focus:ring-tomato text-lg" placeholder="Your name"
+          focus:ring-2 focus:ring-inset focus:ring-tomato text-base md:text-lg"
+          placeholder="Your name"
         >
         <label for="email" class="sr-only">Email address</label>
         <input id="email" name="email" type="email" autocomplete="email"
-          class="mt-2 block w-full border-2 border-black py-3 text-gray-900 placeholder:text-gray-700 focus:ring-2 focus:ring-inset focus:ring-tomato text-lg"
+          class="mt-2 block w-full border-2 border-black py-3 text-gray-900 placeholder:text-gray-700 focus:ring-2 focus:ring-inset focus:ring-tomato text-base md:text-lg"
           placeholder="Email address"
         >
         <label for="message" class="sr-only">Message</label>
         <textarea id="message" name="message" rows="3"
-          class="mt-2 block w-full border-2 border-black py-3 text-gray-900 placeholder:text-gray-700 focus:ring-2 focus:ring-inset focus:ring-tomato text-lg"
+          class="mt-2 block w-full border-2 border-black py-3 text-gray-900 placeholder:text-gray-700 focus:ring-2 focus:ring-inset focus:ring-tomato text-base md:text-lg"
           placeholder="Write a few sentences about yourself."
         ></textarea>
-        <div class="mt-2 flex justify-end">
+        <div class="mt-4 flex justify-end">
           <div class="bg-black duration-200">
             <button
               class="border-2 border-black bg-cherry-pink px-4 py-2 active:translate-x-0
               active:translate-y-0 duration-200
               -translate-x-1 -translate-y-1 hover:-translate-x-1.5
-              hover:-translate-y-1.5 text-lg font-semibold"
+              hover:-translate-y-1.5 text-lg md:text-lg font-semibold"
             >
               Let's Create Together
             </button>
@@ -139,5 +141,4 @@
   </div>
 <div>
 {{- end }}
-
 {{- end }}
