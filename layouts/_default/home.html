@@ -88,21 +88,51 @@
   </div>
 </div>
 
-
 {{/* Cta section */}}
 {{- if .Site.Params.cta.enable | default true }}
-<div class=" bg-risd-blue border-black">
-  <div class="relative container mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-36">
+<div class="bg-risd-blue border-black">
+  <div class="relative container md:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-36">
     <span class="absolute top-10 right-10 inline-block h-8 w-8 md:h-20 md:w-20 text-tomato">
       {{ $svg := readFile "static/icons/spin.svg" }}
       {{ $svg | safeHTML }}
     </span>
-    <div class="max-w-4xl mx-auto">
-      <p class="font-display text-4xl md:text-6xl text-white text-center">
-        {{- .Site.Params.cta.body }}
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:gap-4">
+      <p class="font-display text-4xl md:text-6xl text-white">
+        {{- .Site.Params.cta.body | safeHTML }}
       </p>
+
+      <form class="font-body">
+        <label for="name" class="sr-only">Name</label>
+        <input id="name" name="name" type="text"
+          class="block w-full border-2 border-black py-3 text-gray-900  placeholder:text-gray-700
+          focus:ring-2 focus:ring-inset focus:ring-tomato text-lg" placeholder="Your name"
+        >
+        <label for="email" class="sr-only">Email address</label>
+        <input id="email" name="email" type="email" autocomplete="email"
+          class="mt-2 block w-full border-2 border-black py-3 text-gray-900 placeholder:text-gray-700 focus:ring-2 focus:ring-inset focus:ring-tomato text-lg"
+          placeholder="Email address"
+        >
+        <label for="message" class="sr-only">Message</label>
+        <textarea id="message" name="message" rows="3"
+          class="mt-2 block w-full border-2 border-black py-3 text-gray-900 placeholder:text-gray-700 focus:ring-2 focus:ring-inset focus:ring-tomato text-lg"
+          placeholder="Write a few sentences about yourself."
+        ></textarea>
+        <div class="mt-2 flex justify-end">
+          <div class="bg-black duration-200">
+            <button
+              class="border-2 border-black bg-cherry-pink px-4 py-2 active:translate-x-0
+              active:translate-y-0 duration-200
+              -translate-x-1 -translate-y-1 hover:-translate-x-1.5
+              hover:-translate-y-1.5 text-lg font-semibold"
+            >
+              Let's Create Together
+            </button>
+          </div>
+        </div>
+      </form>
     </div>
-    <span class="absolute bottom-5 left-10 inline-block h-8 w-8 md:h-20 md:w-20 text-tomato">
+    <span class="absolute bottom-10 left-10 inline-block h-8 w-8 md:h-20 md:w-20 text-tomato">
       {{ $svg := readFile "static/icons/spin.svg" }}
       {{ $svg | safeHTML }}
     </span>
