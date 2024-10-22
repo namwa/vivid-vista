@@ -6,9 +6,9 @@
   <div class="container mx-auto px-4 sm:px-6 py-4 lg:px-8">
     <div class="relative flex items-center justify-between h-16">
       <div class="flex items-center">
-        <a href="/" class="flex-shrink-0 flex flex-col items-center group font-accent font-semibold text-2xl">
+        <a href="/" class="flex-shrink-0 flex flex-col items-center group font-accent font-semibold text-2xl text-risd-blue">
           {{ site.Title }}
-          <!-- Hand-drawn underline SVG -->
+          {{/* Hand-drawn underline SVG */}}
           <div class="w-16 h-0 text-blue-500 opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100">
             {{ $curvy := readFile "static/icons/curvy_line.svg" }}
             {{ $curvy | safeHTML }}
@@ -16,7 +16,7 @@
         </a>
       </div>
       <div class="hidden md:block">
-        <ul class="ml-10 flex items-baseline space-x-10">
+        <ul class=" flex items-baseline space-x-10">
           {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" .) }}
         </ul>
       </div>
@@ -26,7 +26,7 @@
         <button
           @click="isOpen = !isOpen"
           type="button"
-          class="inline-flex items-center justify-center p-2 text-gray-800 rounded-full border-2 border-gray-900 hover:text-risd-blue hover:border-risd-blue ">
+          class="inline-flex items-center justify-center p-2 text-gray-800 rounded-full border-2 border-gray-900 hover:text-risd-blue hover:border-risd-blue">
           <span class="sr-only">Open main menu</span>
           <!-- Icon when menu is closed -->
           <svg x-cloak  x-show="!isOpen" class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -75,8 +75,8 @@
         {{- $name = . }}
       {{- end }}
     {{- end }}
-    <li class="flex items-center relative md:pl-0 group space-x-4 font-display font-bold text-3xl">
-      <span class="h-7 w-7 md:w-5 md:h-5 text-icterine">
+    <li class="flex items-center relative md:pl-0 group space-x-2 font-display font-bold text-2xl text-gray-800">
+      <span class="h-7 w-7 md:w-5 md:h-5 {{ if $page.IsMenuCurrent .Menu .}} text-tomato {{ else }} text-gray-800 {{ end }}">
         {{ $svg := readFile "static/icons/star.svg" }}
         {{ $svg | safeHTML }}
       </span>

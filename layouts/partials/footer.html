@@ -1,1 +1,30 @@
-<p>Copyright {{ now.Year }}. All rights reserved.</p>
+<div class="relative bg-black font-body">
+  <div class="container mx-auto py-20 sm:py-24 px-4 sm:px-6 lg:px-8">
+    <nav class="py-4 flex flex-wrap justify-center" aria-label="Footer">
+      {{- $current := . }}
+      {{- range .Site.Menus.main }}
+        {{- $active := or ($current.IsMenuCurrent "main" .) ($current.HasMenuCurrent "main" .) }}
+        {{- $active = or $active (eq .Name $current.Title) }}
+        {{- $active = or $active (and (eq .Name "Blog") (eq $current.Section "blog")) }}
+        <div class="px-5 py-2">
+          <a href="{{ .URL }}" class="{{ if $active }}active{{ else }}text-gray-500 text-sm md:text-base hover:text-gray-600{{ end }}">{{ .Name }}</a>
+        </div>
+      {{- end }}
+    </nav>
+    <div class="mt-10 text-gray-500 text-center">
+      <p>Copyright {{ now.Year }}. All rights reserved.</p>
+      <div class="mt-4 flex space-x-2 justify-center">
+        <p>{{- .Site.Params.footer.author | safeHTML }}</p>
+        {{- if .Site.Params.github }}
+        <a href="{{ .Site.Params.github }}" class="text-gray-400 hover:text-gray-500">
+          <span class="sr-only">GitHub</span>
+          <span class="inline-block h-5 w-5 md:h-6 md:w-6">
+            {{ $curvy := readFile "static/icons/github.svg" }}
+            {{ $curvy | safeHTML }}
+          </span>
+        </a>
+        {{- end }}
+      </div>
+    </div>
+  </div>
+</div>

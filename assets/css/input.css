@@ -5,5 +5,5 @@
 [x-cloak] { display: none !important; }
 
 .active {
-  @apply text-risd-blue;
+  @apply text-tomato;
 }

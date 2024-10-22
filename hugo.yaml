@@ -13,8 +13,8 @@ menus:
     - name: Blog
       pageRef: /blog
       weight: 30
-    - name: About
-      pageRef: /about
+    - name: Contact
+      pageRef: /contact
       weight: 40
 module:
   hugoVersion:

@@ -1,11 +1,144 @@
 {{ define "main" }}
-  {{ .Content }}
-  <p class="font-display text-red-500">Display</p>
-  <p class="font-body text-green-500">body</p>
+<div class="bg-cherry-pink border-b border-black">
+  <div class="container md:max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-36">
+    <h1 class="font-display font-semibold text-4xl md:text-7xl text-risd-blue">
+      {{ .Site.Params.Slogan }}
+    </h1>
+    {{/* {{ .Content }} */}}
+  </div>
+</div>
 
+{{/* About section */}}
+{{- if .Site.Params.about.enable | default true }}
+<div class="bg-icterine border-b border-black">
+  <div class="container md:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-36">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-14 w-full">
+      <div class="order-2 md:order-1 bg-cherry-pink border-2 border-black w-full p-2">
+        {{ with .Site.Params.about.image }}
+          {{ $image := resources.Get .}}
+          {{ with $image }}
+          <div class="bg-white p-4 -rotate-6 border-2 border-black">
+            <img src="{{ .RelPermalink }}" alt="Profile Picture" class="block w-full">
+          </div>
+          {{- end }}
+        {{- end }}
+      </div>
+      <div class="order-1 md:order-2 space-y-20">
+        <p class="font-accent text-3xl md:text-5xl">{{- .Site.Params.about.title }}<p>
+        <p class="font-body text-lg md:text-xl">{{- .Site.Params.about.body }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+{{- end }}
 
-  {{ range site.RegularPages }}
-    <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
-    {{ .Summary }}
-  {{ end }}
-{{ end }}
+{{/* Features section */}}
+<div class="bg-white container md:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div class=" border-x border-black">
+    <div class="py-20 md:py-36">
+      <h2 class="font-display text-center text-3xl md:text-5xl">Why static?</h2>
+
+      <div class="mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        {{ $bgColors := slice "bg-tomato" "bg-cherry-pink" "bg-icterine" "bg-risd-blue" "bg-white" }}
+        {{ $textColors := slice "text-gray-800" "text-gray-800" "text-gray-800" "text-white" "text-gray-800" }}
+        {{ $icons := slice "icons/rocket.svg" "icons/seo.svg" "icons/responsive-design.svg" "icons/lock.svg" "icons/repair.svg" "icons/speed.svg" }}
+
+        {{ range $index, $feature := .Params.features}}
+        <div class="{{ index $bgColors (mod $index (len $bgColors)) }} border border-black h-52 p-8 flex flex-col items-center justify-center space-y-4">
+          <h3 class="{{ index $textColors (mod $index (len $textColors)) }} text-2xl md:text-3xl font-display font-semibold">
+            {{ $feature.title}}
+          </h3>
+          <img
+            src="{{ (index $icons (mod $index (len $icons))) | relURL }}"
+            alt="Icon {{ $feature.title }}"
+            class="h-10 w-10"
+          >
+          <p class="{{ index $textColors (mod $index (len $textColors)) }} mt-4 font-body text-lg md:text-xl">
+            {{ $feature.description }}
+          </p>
+        </div>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</div>
+
+{{/* Blog section */}}
+<div class="bg-cherry-pink border-black">
+  <div class="container md:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-36">
+    <h2 class="font-display text-center text-3xl md:text-5xl">Blog</h2>
+
+    <div class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-6">
+      {{- range first 3 site.RegularPages }}
+      <div class="group bg-white p-4 border-2 border-black transition-all duration-300
+        hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+      >
+        <a href="{{ .RelPermalink }}">
+          <img
+            src="{{ .Params.image | relURL }}"
+            alt="Image for {{ .LinkTitle }}"
+            class="w-full object-cover border border-black"
+          >
+          <h3 class="text-2xl md:text-3xl my-4 font-display text-gray-900 group-hover:underline decoration-2">{{ .LinkTitle }}</h3>
+          <p class="text-lg md:text-xl text-gray-800">
+            {{ .Summary | plainify | truncate 150 | safeHTML }}
+          </p>
+        </a>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</div>
+
+{{/* Cta section */}}
+{{- if .Site.Params.cta.enable | default true }}
+<div class="bg-risd-blue border-black">
+  <div class="relative container md:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-36">
+    <span class="absolute top-10 right-10 inline-block h-8 w-8 md:h-20 md:w-20 text-tomato">
+      {{ $svg := readFile "static/icons/spin.svg" }}
+      {{ $svg | safeHTML }}
+    </span>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <p class="font-display text-4xl md:text-6xl text-white">
+        {{- .Site.Params.cta.body | safeHTML }}
+      </p>
+      <form class="font-body">
+        <label for="name" class="sr-only">Name</label>
+        <input id="name" name="name" type="text"
+          class="block w-full border-2 border-black py-3 text-gray-900  placeholder:text-gray-700
+          focus:ring-2 focus:ring-inset focus:ring-tomato text-base md:text-lg"
+          placeholder="Your name"
+        >
+        <label for="email" class="sr-only">Email address</label>
+        <input id="email" name="email" type="email" autocomplete="email"
+          class="mt-2 block w-full border-2 border-black py-3 text-gray-900 placeholder:text-gray-700 focus:ring-2 focus:ring-inset focus:ring-tomato text-base md:text-lg"
+          placeholder="Email address"
+        >
+        <label for="message" class="sr-only">Message</label>
+        <textarea id="message" name="message" rows="3"
+          class="mt-2 block w-full border-2 border-black py-3 text-gray-900 placeholder:text-gray-700 focus:ring-2 focus:ring-inset focus:ring-tomato text-base md:text-lg"
+          placeholder="Write a few sentences about yourself."
+        ></textarea>
+        <div class="mt-4 flex justify-end">
+          <div class="bg-black duration-200">
+            <button
+              class="border-2 border-black bg-cherry-pink px-4 py-2 active:translate-x-0
+              active:translate-y-0 duration-200
+              -translate-x-1 -translate-y-1 hover:-translate-x-1.5
+              hover:-translate-y-1.5 text-lg md:text-lg font-semibold"
+            >
+              Let's Create Together
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <span class="absolute bottom-10 left-10 inline-block h-8 w-8 md:h-20 md:w-20 text-tomato">
+      {{ $svg := readFile "static/icons/spin.svg" }}
+      {{ $svg | safeHTML }}
+    </span>
+  </div>
+<div>
+{{- end }}
+{{- end }}
