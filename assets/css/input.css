@@ -7,3 +7,7 @@
 .active {
   @apply text-tomato;
 }
+
+.hidden {
+  display: none;
+}

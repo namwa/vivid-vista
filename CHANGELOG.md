@@ -1,5 +1,9 @@
 #CHANGELOG
 
+## 0.3.0 - 24 Oct 2024
+
+- List page with custom pagination
+
 ## 0.2.0 - 18 Oct 2024
 
 - Home page
