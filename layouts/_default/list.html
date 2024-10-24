@@ -21,7 +21,8 @@
     {{- end }}
 
     <div class="space-y-8 pt-12">
-      {{ range .Pages | first 3 }}
+      {{ $paginator := .Paginate .Pages 3 }}
+      {{ range $paginator.Pages }}
       <article class="bg-white border-4 border-black p-6 cursor-pointer hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
         <a href="{{ .RelPermalink }}">
           <div class="flex justify-between items-start">
@@ -57,7 +58,8 @@
       </article>
       {{- end }}
     </div>
-
+    <!-- Include the pagination -->
+    {{ partial "pagination.html" (dict "paginator" $paginator) . }}
   </div>
   </div>
 </div>
