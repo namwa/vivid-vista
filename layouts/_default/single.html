@@ -1,10 +1,34 @@
 {{ define "main" }}
-  <h1>{{ .Title }}</h1>
-
-  {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
-  {{ $dateHuman := .Date | time.Format ":date_long" }}
-  <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
-
-  {{ .Content }}
-  {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
+<div class="bg-icterine">
+  <div class="container border-2 border-gray-800 md:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 bg-white">
+    <div class="max-w-4xl">
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-800 font-display">
+        {{ .Title }}
+      </h1>
+      <span class="inline-block my-6 text-lg">
+        <!-- Created Date -->
+        {{- $pubdate := .PublishDate.Format "2 Jan 2006" }}
+        {{- $lastmod := .Lastmod.Format "2 Jan 2006" }}
+        <p class="text-gray-700/80 {{- if ne $lastmod $pubdate }} hidden {{- end }}">
+          <time datetime="{{ .PublishDate }}" title="{{ .PublishDate }}">
+            {{ $pubdate }}
+          </time>
+        </p>
+        <!-- Last Updated Date -->
+        {{- if .Lastmod }}
+          {{- if ne $lastmod $pubdate }}
+          <p class="text-gray-700/80">
+            Updated:
+            <time datetime="{{ .Lastmod }}" title="{{ .Lastmod }}">
+              {{ $lastmod }}
+            </time>
+          </p>
+          {{- end }}
+        {{- end }}
+      </span>
+    </div>
+    <div class="content">{{ .Content }}</div>
+    {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
+  </div>
+</div>
 {{ end }}
