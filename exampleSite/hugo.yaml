@@ -2,7 +2,10 @@ baseURL: 'https://example.org/'
 languageCode: 'en-us'
 title: 'Namwa'
 theme: 'vivid-vista'
+enableEmoji: true
+
 params:
+  paginate: 6
   slogan: >
     Building beautiful,
     blazing-fast static websites

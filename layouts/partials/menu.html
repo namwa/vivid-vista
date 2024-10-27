@@ -16,7 +16,7 @@
         </a>
       </div>
       <div class="hidden md:block">
-        <ul class=" flex items-baseline space-x-10">
+        <ul class="flex items-baseline space-x-10">
           {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" .) }}
         </ul>
       </div>
@@ -76,11 +76,11 @@
       {{- end }}
     {{- end }}
     <li class="flex items-center relative md:pl-0 group space-x-2 font-display font-bold text-2xl text-gray-800">
-      <span class="h-7 w-7 md:w-5 md:h-5 {{ if $page.IsMenuCurrent .Menu .}} text-tomato {{ else }} text-gray-800 {{ end }}">
+      <span class="h-7 w-7 md:w-5 md:h-5 {{ if $page.IsMenuCurrent .Menu . }} text-tomato {{ else }} text-gray-800 {{ end }}">
         {{ $svg := readFile "static/icons/star.svg" }}
         {{ $svg | safeHTML }}
       </span>
-      <a class="flex flex-col items-center {{ if $page.IsMenuCurrent .Menu . }}active{{ end }}"
+      <a class="{{ if $page.IsMenuCurrent .Menu . }}active{{ end }}"
         {{- range $k, $v := $attrs }}
           {{- with $v }}
             {{- printf " %s=%q" $k $v | safeHTMLAttr }}
