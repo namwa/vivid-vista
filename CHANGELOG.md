@@ -1,5 +1,9 @@
 #CHANGELOG
 
+## 0.4.0 - 27 OCt 2024
+
+- Blog single page and styling terms.html
+
 ## 0.3.0 - 24 Oct 2024
 
 - List page with custom pagination
