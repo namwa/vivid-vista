@@ -5,13 +5,17 @@
       {{ .Title }}
     </h1>
 
+    {{- if .Content }}
     <p class="text-body text-lg">{{ .Content | plainify }}</p>
+    {{ else }}
+    {{- end }}
 
+    {{/* Tags */}}
     {{ if .Site.Taxonomies.tags }}
     <div class="pt-12">
       {{ range .Site.Taxonomies.tags }}
       <a href="{{ .Page.Permalink }}"
-        class="mx-1 my-1 px-2.5 py-2 inline-block border border-gray-800 bg-slate-800
+        class="my-1 px-2.5 py-2 inline-block border border-gray-800 bg-slate-800
         text-white hover:bg-gray-100 hover:text-gray-800"
       >
         {{ .Page.Title }}
