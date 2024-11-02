@@ -1,0 +1,87 @@
+{{ define "main" }}
+<div class="bg-icterine">
+  <div class="container md:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <h1 class="text-4xl font-black font-display mb-12 text-gray-900">
+      {{ .Title }}
+    </h1>
+
+    {{- if .Content }}
+    <p class="text-body text-lg">{{ .Content | plainify }}</p>
+    {{ else }}
+    {{- end }}
+
+    <div class="space-y-8 pt-12">
+      {{ $paginator := .Paginate .Pages 6 }}
+      {{ range $paginator.Pages }}
+        <article class="bg-white border-4 border-black p-6 cursor-pointer hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+          <a href="{{ .RelPermalink }}">
+            <div class="grid md:grid-cols-3 gap-6">
+              <!-- Image Section with Asset Processing -->
+              <div class="md:col-span-1">
+                {{ with .Params.featured_image }}
+                  {{ $original := resources.Get . }}
+                  {{ if $original }}
+                    {{ $image := $original.Resize "800x" }}
+                    <img
+                      src="{{ $image.RelPermalink }}"
+                      alt="{{ $.LinkTitle }}"
+                      width="{{ $image.Width }}"
+                      height="192"
+                      class="w-full h-48 object-cover border-2 border-black"
+                      loading="lazy"
+                    />
+                  {{ else }}
+                    <div class="w-full h-48 bg-gray-200 border-2 border-black flex flex-col items-center justify-center">
+                      <span class="text-gray-500">Image not found</span>
+                      <span class="text-gray-400 text-sm">Path: {{ . }}</span>
+                    </div>
+                  {{ end }}
+                {{ else }}
+                  <!-- No featured_image specified -->
+                  <div class="w-full h-48 bg-gray-200 border-2 border-black flex items-center justify-center">
+                    <span class="text-gray-500">No image specified</span>
+                  </div>
+                {{ end }}
+              </div>
+
+              <!-- Content Section -->
+              <div class="md:col-span-2">
+                <div class="flex justify-between items-start">
+                  <h2 class="text-3xl font-bold font-display mb-4">{{ .LinkTitle }}</h2>
+                </div>
+                <p class="text-lg mb-4 font-body">{{ .Summary | plainify | truncate 150 }}</p>
+                <div class="flex justify-between items-center">
+                  <!-- Created Date -->
+                  {{- $pubdate := .PublishDate.Format "2 Jan 2006" }}
+                  {{- $lastmod := .Lastmod.Format "2 Jan 2006" }}
+                  <p class="text-base text-gray-600/80 {{- if ne $lastmod $pubdate }} hidden {{- end }}">
+                    <time datetime="{{ .PublishDate }}" title="{{ .PublishDate }}">
+                      {{ $pubdate }}
+                    </time>
+                  </p>
+                  <!-- Last Updated Date -->
+                  {{- if .Lastmod }}
+                    {{- if ne $lastmod $pubdate }}
+                    <div class="text-base text-gray-600/80">
+                      Updated:
+                      <time datetime="{{ .Lastmod }}" title="{{ .Lastmod }}">
+                        {{ $lastmod }}
+                      </time>
+                    </div>
+                    {{- end }}
+                  {{- end }}
+                  <button class="bg-risd-blue text-white px-6 py-2 font-bold hover:bg-white hover:text-black border-2 border-black transition-colors">
+                    VIEW PROJECT →
+                  </button>
+                </div>
+              </div>
+            </div>
+          </a>
+        </article>
+      {{- end }}
+    </div>
+    <!-- Include the pagination -->
+    {{ partial "pagination.html" (dict "paginator" $paginator) . }}
+  </div>
+</div>
+{{ end }}
