@@ -1,5 +1,9 @@
 #CHANGELOG
 
+## 0.5.0 - 2 Nov 2024
+
+- Fix height for element nested inside main section.
+
 ## 0.4.0 - 27 OCt 2024
 
 - Blog single page and styling terms.html
