@@ -1,5 +1,9 @@
 #CHANGELOG
 
+## 0.6.0 - 3 Nov 2024
+
+- Project list page grap cover image from the same directory instead of asset folder.
+
 ## 0.5.0 - 2 Nov 2024
 
 - Fix height for element nested inside main section.

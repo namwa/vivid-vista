@@ -18,25 +18,17 @@
             <div class="grid md:grid-cols-3 gap-6">
               <!-- Image Section with Asset Processing -->
               <div class="md:col-span-1">
-                {{ with .Params.featured_image }}
-                  {{ $original := resources.Get . }}
-                  {{ if $original }}
-                    {{ $image := $original.Resize "800x" }}
-                    <img
-                      src="{{ $image.RelPermalink }}"
-                      alt="{{ $.LinkTitle }}"
-                      width="{{ $image.Width }}"
-                      height="192"
-                      class="w-full h-48 object-cover border-2 border-black"
-                      loading="lazy"
-                    />
+                {{ with .Resources.GetMatch .Params.featured_image }}
+                  {{ $image := .Resize "800x" }}
+                  <img
+                    src="{{ $image.RelPermalink }}"
+                    alt="{{ $.LinkTitle }}"
+                    width="{{ $image.Width }}"
+                    height="192"
+                    class="w-full h-48 object-cover border-2 border-black"
+                    loading="lazy"
+                  />
                   {{ else }}
-                    <div class="w-full h-48 bg-gray-200 border-2 border-black flex flex-col items-center justify-center">
-                      <span class="text-gray-500">Image not found</span>
-                      <span class="text-gray-400 text-sm">Path: {{ . }}</span>
-                    </div>
-                  {{ end }}
-                {{ else }}
                   <!-- No featured_image specified -->
                   <div class="w-full h-48 bg-gray-200 border-2 border-black flex items-center justify-center">
                     <span class="text-gray-500">No image specified</span>
