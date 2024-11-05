@@ -67,18 +67,25 @@
 <div class="bg-cherry-pink border-black">
   <div class="container md:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-36">
     <h2 class="font-display text-center text-3xl md:text-5xl">Blog</h2>
-
     <div class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-6">
       {{- range first 3 site.RegularPages }}
       <div class="group bg-white p-4 border-2 border-black transition-all duration-300
-        hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+        hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] overflow-hidden"
       >
         <a href="{{ .RelPermalink }}">
-          <img
-            src="{{ .Params.image | relURL }}"
-            alt="Image for {{ .LinkTitle }}"
-            class="w-full object-cover border border-black"
-          >
+          <div class="h-48 relative">
+            {{- if .Params.image }}
+            <img
+              src="{{ .Params.image | relURL }}"
+              alt="Image for {{ .LinkTitle }}"
+              class="w-full h-full object-cover border border-black"
+            >
+            {{- else }}
+            <div class="p-4 h-full bg-gray-200 border border-black flex items-center justify-center">
+              <h3 class="text-2xl md:text-3xl font-display text-gray-600">{{ .LinkTitle }}</h3>
+            </div>
+            {{- end }}
+          </div>
           <h3 class="text-2xl md:text-3xl my-4 font-display text-gray-900 group-hover:underline decoration-2">{{ .LinkTitle }}</h3>
           <p class="text-lg md:text-xl text-gray-800">
             {{ .Summary | plainify | truncate 150 | safeHTML }}
