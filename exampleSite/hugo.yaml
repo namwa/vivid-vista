@@ -1,6 +1,6 @@
 baseURL: 'https://example.org/'
 languageCode: 'en-us'
-title: 'Namwa'
+title: 'Jan Doe'
 theme: 'vivid-vista'
 enableEmoji: true
 
@@ -29,8 +29,8 @@ params:
       lightning-fast websites?
 
   # Social icons on footer
-  github: https://github.com/namwa
+  github: https://github.com/your-name
 
   # Footer
   footer:
-    author: By Namwa
+    author: By Jane Doe
