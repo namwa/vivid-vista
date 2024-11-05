@@ -1,6 +1,6 @@
 {{ define "main" }}
 <div class="flex-grow bg-icterine">
-  <div class="container md:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+  <div class="container md:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-20">
     <h1 class="text-4xl font-black font-display mb-12 text-gray-900">
       {{ .Title }}
     </h1>
@@ -54,8 +54,9 @@
               </div>
               {{- end }}
             {{- end }}
-            <button class="bg-risd-blue text-white px-6 py-2 font-bold hover:bg-white hover:text-black border-2 border-black transition-colors">
-              READ →
+            <button class="flex items-center bg-risd-blue text-white px-6 py-2 font-bold hover:bg-white hover:text-black border-2 border-black transition-colors">
+              <span class="inline-block mr-1">READ</span>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-8 w-8" fill="currentColor"><path d="m18.707 12.707-3 3a1 1 0 0 1-1.414-1.414L15.586 13H6a1 1 0 0 1 0-2h9.586l-1.293-1.293a1 1 0 0 1 1.414-1.414l3 3a1 1 0 0 1 0 1.414z" style="currentColor" data-name="Right"/></svg>
             </button>
           </div>
         </a>
