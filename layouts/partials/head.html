@@ -1,16 +1,18 @@
-{{- if hugo.IsProduction }}
-  {{ with .Site.Params.googleAnalytics }}
+{{- if eq hugo.Environment "production" }}
+  {{- with .Site.Params.googleAnalytics }}
   <script async src="https://www.googletagmanager.com/gtag/js?id={{ . }}"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    dataLayer.push({
-      PageTitle: {{ .Title }}
-    });
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', '{{ . }}');
+    {{ with $.Title }}
+    dataLayer.push({
+      'PageTitle': '{{ . }}'
+    });
+    {{ end }}
   </script>
-  {{ end }}
+  {{- end }}
 {{- end }}
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
