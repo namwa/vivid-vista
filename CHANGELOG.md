@@ -1,5 +1,10 @@
 #CHANGELOG
 
+## 0.9.0 - 5 Nov 2024
+
+- Correct icons
+- Fixed image height on home page
+
 ## 0.8.0 - 5 Nov 2024
 
 - SEO optimisation
