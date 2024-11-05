@@ -1,10 +1,11 @@
 baseURL: 'https://example.org/'
 languageCode: 'en-us'
-title: 'Namwa'
+title: 'Jan Doe'
 theme: 'vivid-vista'
 enableEmoji: true
 
 params:
+  googleTagManager: "GTM-XXXXXX"  # Replace with your GTM container ID
   paginate: 6
   slogan: >
     Building beautiful,
@@ -29,8 +30,8 @@ params:
       lightning-fast websites?
 
   # Social icons on footer
-  github: https://github.com/namwa
+  github: https://github.com/your-name
 
   # Footer
   footer:
-    author: By Namwa
+    author: By Jane Doe

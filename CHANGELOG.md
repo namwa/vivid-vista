@@ -1,5 +1,11 @@
 #CHANGELOG
 
+## 0.7.0 - 5 Nov 2024
+
+- Submit success, netlify form
+- Tidy css
+- Add GTM
+
 ## 0.6.0 - 3 Nov 2024
 
 - Project list page grap cover image from the same directory instead of asset folder.
