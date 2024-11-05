@@ -13,18 +13,24 @@
 <div class="bg-icterine border-b border-black">
   <div class="container md:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-36">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-14 w-full">
-      <div class="order-2 md:order-1 bg-cherry-pink border-2 border-black w-full p-2">
-        {{ with .Site.Params.about.image }}
-          {{ $image := resources.Get .}}
-          {{ with $image }}
-          <div class="bg-white p-4 -rotate-6 border-2 border-black">
-            <img src="{{ .RelPermalink }}" alt="Profile Picture" class="block w-full">
-          </div>
+      {{- /* Pink Background and Image Wrapper */ -}}
+      <div class="order-2 md:order-1 flex justify-center items-center">
+        <div class="bg-cherry-pink border-2 border-black p-4 inline-flex justify-center">
+          {{ with .Site.Params.about.image }}
+            {{ $image := resources.Get .}}
+            {{ with $image }}
+            {{- /* White Border and Tilted Image */ -}}
+            <div class="bg-white p-4 -rotate-6 border-2 border-black flex items-center justify-center">
+              <img src="{{ .RelPermalink }}" alt="Profile Picture" class="block w-full h-full object-cover">
+            </div>
+            {{- end }}
           {{- end }}
-        {{- end }}
+        </div>
       </div>
-      <div class="order-1 md:order-2 space-y-20">
-        <p class="font-accent text-3xl md:text-5xl">{{- .Site.Params.about.title | safeHTML }}<p>
+
+      {{- /* Text Content */ -}}
+      <div class="order-1 md:order-2 space-y-8">
+        <p class="font-accent text-3xl md:text-5xl">{{- .Site.Params.about.title | safeHTML }}</p>
         <p class="font-body text-lg md:text-xl">{{- .Site.Params.about.body | safeHTML }}</p>
       </div>
     </div>
@@ -32,7 +38,7 @@
 </div>
 {{- end }}
 
-{{/* Features section */}}
+{{- /* Features section */ -}}
 <div class="bg-white container md:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
   <div class=" border-x border-black">
     <div class="py-20 md:py-36">
@@ -63,7 +69,7 @@
   </div>
 </div>
 
-{{/* Blog section */}}
+{{- /* Blog section */ -}}
 <div class="bg-cherry-pink border-black">
   <div class="container md:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-36">
     <h2 class="font-display text-center text-3xl md:text-5xl">Blog</h2>
