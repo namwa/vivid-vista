@@ -4,14 +4,6 @@
   {{ partial "head.html" . }}
 </head>
 <body class="min-h-screen flex flex-col">
-  {{- if not hugo.IsServer }}
-    {{- with .Site.Params.googleTagManager }}
-    {{- /* Google Tag Manager (noscript) */ -}}
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ . }}"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    {{- /* End Google Tag Manager (noscript) */ -}}
-    {{- end }}
-  {{- end }}
   <header>
     {{ partial "header.html" . }}
   </header>

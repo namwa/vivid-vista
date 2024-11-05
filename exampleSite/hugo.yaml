@@ -5,7 +5,7 @@ theme: 'vivid-vista'
 enableEmoji: true
 
 params:
-  googleTagManager: "GTM-XXXXXX"  # Replace with your GTM container ID
+  googleAnalytics: "G-XXXXXXXXXX"
   paginate: 6
   slogan: >
     Building beautiful,
