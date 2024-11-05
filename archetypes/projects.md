@@ -10,6 +10,7 @@ client: ""          # If applicable
 technologies: []    # e.g., ["Hugo", "Tailwind CSS", "JavaScript"]
 website: ""         # Live project URL if applicable
 repository: ""      # GitHub/GitLab repository URL if applicable
+keywords: ["keyword1", "keyword2"]
 tags: []
 categories: []
 ---

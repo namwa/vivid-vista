@@ -5,6 +5,7 @@ theme: 'vivid-vista'
 enableEmoji: true
 
 params:
+  favicon: 'favicon.ico'
   googleAnalytics: "G-XXXXXXXXXX"
   paginate: 6
   slogan: >
