@@ -1,0 +1,11 @@
+{{- define "main" }}
+<div class="flex-grow bg-cherry-pink text-body text-gray-900">
+  <div class="container mx-auto text-center py-24 space-y-10">
+    <h1 class="text-4xl">Page Not Found</h1>
+    <p class="text-2xl py-2">Sorry, the page you're looking for doesn't exist.</p>
+    <a href="{{ "/" | relURL }}" class="text-blue-600 hover:text-tomato underline text-lg font-semibold">
+      Return to Homepage
+    </a>
+  </div>
+</div>
+{{- end }}

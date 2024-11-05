@@ -16,11 +16,18 @@
 {{- end }}
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
+<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Summary }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}{{ end }}">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Playwrite+GB+S:ital@0;1&family=Roboto:wght@100;400&display=swap" rel="stylesheet">
+{{- with .Site.Params.favicon }}
+<link rel="shortcut icon" href="{{ . | relURL }}">
+{{- end }}
 
+{{- /* Canonical URL */ -}}
+<link rel="canonical" href="{{ .Permalink }}">
+{{- partial "seo.html" . }}
 <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ printf "%s | %s" .Title site.Title }}{{ end }}</title>
 {{- partialCached "head/css.html" . }}
 {{- partialCached "head/js.html" . }}

@@ -1,5 +1,10 @@
 #CHANGELOG
 
+## 0.8.0 - 5 Nov 2024
+
+- SEO optimisation
+- Favicon
+
 ## 0.7.0 - 5 Nov 2024
 
 - Submit success, netlify form
