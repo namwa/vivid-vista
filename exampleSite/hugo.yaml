@@ -9,13 +9,12 @@ params:
   googleAnalytics: "G-XXXXXXXXXX"
   paginate: 6
   slogan: >
-    Building beautiful,
-    blazing-fast static websites
+    Building beautiful websites
 
   # Home page, About section
   about:
     enable: true
-    title: Hi this is Namwa.
+    title: Hi!.
     body: Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuer
       cubilia curae; Fusce diam justo, dictum ut leo sit amet, hendrerit varius neque. Maecenas non
       ortor mauris. Aliquam aliquam tempus mauris nec venenatis. In in massa vitae leo malesuada
