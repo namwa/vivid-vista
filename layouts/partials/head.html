@@ -11,6 +11,16 @@
       'PageTitle': '{{ . }}'
     });
     {{ end }}
+    {{ with .Params.categories }}
+    dataLayer.push({
+      'PageCategory': '{{ delimit . ", " }}'
+    });
+    {{ end }}
+    {{ with .Params.tags }}
+    dataLayer.push({
+      'PageTags': '{{ delimit . ", " }}'
+    });
+    {{ end }}
   </script>
   {{- end }}
 {{- end }}
