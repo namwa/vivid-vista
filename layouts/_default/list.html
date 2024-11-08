@@ -25,8 +25,8 @@
     {{- end }}
 
     <div class="space-y-8 pt-12">
-      {{ $paginator := .Paginate .Pages 6 }}
-      {{ range $paginator.Pages }}
+      {{ $paginator := .Paginate (sort .Pages "Lastmod" "desc") 6 }}
+      {{- range $paginator.Pages }}
       <article class="bg-white border-4 border-black p-6 cursor-pointer hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
         <a href="{{ .RelPermalink }}">
           <div class="flex justify-between items-start">
