@@ -11,16 +11,28 @@
       'PageTitle': '{{ . }}'
     });
     {{ end }}
-    {{ with .Params.categories }}
-    dataLayer.push({
-      'PageCategory': '{{ delimit . ", " }}'
-    });
-    {{ end }}
-    {{ with .Params.tags }}
-    dataLayer.push({
-      'PageTags': '{{ delimit . ", " }}'
-    });
-    {{ end }}
+    {{- if $.Params }}
+      {{ with $.Params.categories }}
+      dataLayer.push({
+        'PageCategory': '{{ delimit . ", " }}'
+      });
+      {{ end }}
+      {{ with $.Params.tags }}
+      dataLayer.push({
+        'PageTags': '{{ delimit . ", " }}'
+      });
+      {{ end }}
+      {{ with $.Params.date }}
+      dataLayer.push({
+        'PagePublishDate': '{{ dateFormat "2 Jan 2006" . }}'
+      });
+      {{ end }}
+      {{ with $.Params.lastmod }}
+      dataLayer.push({
+        'PageLastModifiedDate': '{{ dateFormat "2 Jan 2006" . }}'
+      });
+      {{ end }}
+    {{- end }}
   </script>
   {{- end }}
 {{- end }}
