@@ -7,4 +7,8 @@ Vivid vista is a maximalism style blog using Hugo SSG and Tailwind CSS.
 
 ### Development
 
+Run ```hugo server```
+
+Another terminal window, run ```npm run watch```
+
 ## Configuration
