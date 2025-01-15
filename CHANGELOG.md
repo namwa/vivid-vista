@@ -1,5 +1,9 @@
 #CHANGELOG
 
+## 0.10.0 - 15 Jan 2024
+
+- HTML Form validation
+
 ## 0.9.0 - 5 Nov 2024
 
 - Correct icons

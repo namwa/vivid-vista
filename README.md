@@ -11,4 +11,10 @@ Run ```hugo server```
 
 Another terminal window, run ```npm run watch```
 
+### Production
+
+```npm run build```
+
+Run ```hugo`` to compile the whole site
+
 ## Configuration

@@ -4,10 +4,6 @@
 
 [x-cloak] { display: none !important; }
 
-body {
-  min-height: -webkit-fill-available;
-}
-
 .active {
   @apply text-tomato;
 }
